@@ -1,1 +1,22 @@
+# Nom de notre workflow
+name: "CI .NET SDK"
 
+# Événements sur lesquels il doit être déclenché
+on:
+  workflow_dispatch:
+  
+jobs:
+  # Notre job
+  build-and-test:
+    runs-on: [macos-12]
+    # Tâches à effectuer, comme expliquées ci-dessus
+    steps:
+      # 1. On récupère le contenu du dépôt
+      - name: "Checkout"
+        uses: actions/checkout@v3
+
+      - name: "build"
+        run: ./build
+
+      - name: "test"
+        run: ./build --test
